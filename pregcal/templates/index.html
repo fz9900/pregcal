@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Pregnancy Calendar</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pregnancy Calendar</h1>
+        </header>
+        <main>
+            <form method="POST" action="{{ url_for('calculate_due_date') }}">
+                <label for="last_period">Last Menstrual Period:</label>
+                <input type="date" id="last_period" name="last_period" required>
+                <button type="submit">Calculate Due Date</button>
+            </form>
+
+            {% if due_date %}
+                <div class="result">
+                    <p><strong>Due Date:</strong> {{ due_date }}</p>
+                </div>
+            {% endif %}
+        </main>
+        <footer>
+            <p>&copy; 2023 Pregnancy Calendar</p>
+        </footer>
+    </div>
+</body>
+</html>
